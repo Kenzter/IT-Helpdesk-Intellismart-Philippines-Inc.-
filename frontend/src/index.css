@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-ink antialiased;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #c6daf8 0%, #e1ebfc 50%, #b4cdf3 100%);
+    background-attachment: fixed;
+  }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-brand; }
+}
+@layer components {
+  .input { @apply w-full rounded-md border border-brand/25 bg-white/90 px-3 py-2.5 text-base shadow-sm sm:py-2 sm:text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30; }
+  .label { @apply mb-1 block text-sm font-medium text-slate-700; }
+  .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-3 text-sm font-semibold sm:py-2 transition motion-safe:duration-150 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-gradient-to-r from-accent to-accent-dark text-white shadow-md shadow-accent/30 hover:brightness-110; }
+  .btn-blue { @apply btn bg-gradient-to-r from-brand to-brand-dark text-white shadow-md shadow-brand/30 hover:brightness-110; }
+  .btn-ghost { @apply btn border border-brand/25 bg-white/60 text-brand-dark hover:bg-white; }
+  /* Tinted gradient surfaces instead of plain white boxes */
+  .card { @apply rounded-xl border border-brand/10 bg-gradient-to-br from-[#eaf2ff] via-[#dbe8fb] to-[#ffe0c0] p-5 shadow-lg shadow-brand/10; }
+  .table-wrap { @apply overflow-x-auto rounded-xl border border-brand/10 bg-gradient-to-br from-[#eaf2ff] to-[#ffe6cc] shadow-lg shadow-brand/10; }
+  .table-head { @apply bg-gradient-to-r from-brand to-brand-dark text-left font-semibold text-white; }
+}
+.table-wrap tbody tr:nth-child(even):not(:hover) { background-color: rgb(31 78 156 / 0.06); }
+
+/* ---- Login page tech backdrop (animations switch off for people who prefer reduced motion) ---- */
+@keyframes tech-grid { to { background-position: 40px 40px; } }
+@keyframes tech-dash { to { stroke-dashoffset: -100; } }
+@keyframes tech-pulse { 0%, 100% { opacity: .35; transform: scale(1); } 50% { opacity: 1; transform: scale(1.7); } }
+@keyframes tech-spin { to { transform: rotate(360deg); } }
+@keyframes tech-spin-rev { to { transform: rotate(-360deg); } }
+@keyframes tech-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+.tech-grid {
+  background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size: 40px 40px; animation: tech-grid 10s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%); mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+}
+.tech-grid-light {
+  background-image: linear-gradient(rgba(31,78,156,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(31,78,156,.08) 1px, transparent 1px);
+  background-size: 40px 40px; animation: tech-grid 14s linear infinite;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 15%, transparent 72%); mask-image: radial-gradient(circle at 50% 50%, black 15%, transparent 72%);
+}
+.tech-flow { stroke-dasharray: 10 90; animation: tech-dash 6s linear infinite; }
+.tech-node { transform-box: fill-box; transform-origin: center; animation: tech-pulse 3.2s ease-in-out infinite; }
+.tech-ring { transform-box: fill-box; transform-origin: center; animation: tech-spin 70s linear infinite; }
+.tech-ring-rev { transform-box: fill-box; transform-origin: center; animation: tech-spin-rev 100s linear infinite; }
+.tech-float { animation: tech-float 7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .tech-grid, .tech-grid-light, .tech-flow, .tech-node, .tech-ring, .tech-ring-rev, .tech-float { animation: none; }
+}
