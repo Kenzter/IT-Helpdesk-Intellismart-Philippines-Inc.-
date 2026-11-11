@@ -9,7 +9,10 @@ import AccountsPage from "./pages/AccountsPage";
 import PublicTicketPage from "./pages/PublicTicketPage";
 import TicketDetailPage from "./pages/TicketDetailPage";
 import DeletionLogsPage from "./pages/DeletionLogsPage";
+<<<<<<< HEAD
 import AboutPage from "./pages/AboutPage";
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 interface AuthCtx {
   user: User | null;
@@ -48,7 +51,11 @@ function ProtectedRoute() {
     <>
       <Navbar />
       {/* Left side bar is 15rem wide on desktop; the top strip is 3.5rem tall */}
+<<<<<<< HEAD
       <main className="pt-14 md:pl-52">
+=======
+      <main className="pt-14 md:pl-60">
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
         <div className="mx-auto max-w-6xl px-4 py-8"><Outlet /></div>
       </main>
     </>
@@ -73,7 +80,10 @@ export default function App() {
           <Route path="/tickets" element={<TicketsPage />} />
           <Route path="/accounts" element={<AccountsPage />} />
           <Route path="/tickets/:id" element={<TicketDetailPage />} />
+<<<<<<< HEAD
           <Route path="/about" element={<AboutPage />} />
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
           <Route element={<AdminRoute />}>
             <Route path="/deletion-logs" element={<DeletionLogsPage />} />
           </Route>

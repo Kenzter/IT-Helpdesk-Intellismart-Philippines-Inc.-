@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
+<<<<<<< HEAD
 import Footer from "./Footer";
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 // Minimalist tech backdrop: circuit traces with moving data pulses, glowing nodes,
 // slow rotating rings and floating chips. Decorative only.
@@ -57,12 +60,20 @@ function TechBackdrop() {
 }
 
 /**
+<<<<<<< HEAD
  * The blue ITI HelpDesk page used by the staff login and the public ticket form:
+=======
+ * The blue ITI Helpdesk page used by the staff login and the public ticket form:
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
  * animated tech background, banner on the left, and a card on the right (children).
  */
 export default function AuthShell({ children, wide = false }: { children: ReactNode; wide?: boolean }) {
   return (
+<<<<<<< HEAD
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-brand-dark via-brand to-[#2f6bc9] px-6 pb-28 pt-10">
+=======
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-brand-dark via-brand to-[#2f6bc9] px-6 py-10">
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
       <TechBackdrop />
       {/* Soft fade to light behind the form side, so the form stands out. Edit this line to change the gradient. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#cfe0fa]/60 via-[#7aa5e6]/18 to-transparent backdrop-blur-md [-webkit-mask-image:linear-gradient(to_top,black,transparent)] [mask-image:linear-gradient(to_top,black,transparent)] lg:inset-x-auto lg:inset-y-0 lg:right-0 lg:h-auto lg:w-1/2 lg:bg-gradient-to-l lg:[-webkit-mask-image:linear-gradient(to_left,black,transparent)] lg:[mask-image:linear-gradient(to_left,black,transparent)]" />
@@ -70,7 +81,11 @@ export default function AuthShell({ children, wide = false }: { children: ReactN
       <div className="relative flex w-full max-w-5xl flex-col items-center gap-12 lg:flex-row lg:justify-center lg:gap-28 xl:gap-40">
         {/* Banner */}
         <div className="text-center text-white lg:text-left">
+<<<<<<< HEAD
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">ITI HelpDesk</h1>
+=======
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">ITI Helpdesk</h1>
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
           <div className="mx-auto mt-4 h-1 w-20 rounded bg-gradient-to-r from-accent-bright to-accent lg:mx-0" />
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.25em] text-white/85">Intellismart IT Services</p>
         </div>
@@ -78,8 +93,11 @@ export default function AuthShell({ children, wide = false }: { children: ReactN
         {/* Card */}
         <div className={`card w-full ${wide ? "max-w-md" : "max-w-sm"} p-6 shadow-2xl shadow-brand-dark/40`}>{children}</div>
       </div>
+<<<<<<< HEAD
 
       <Footer onBackdrop />
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
     </div>
   );
 }

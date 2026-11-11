@@ -12,7 +12,10 @@ const ICONS = {
   list: "M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01",
   logout: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9",
   menu: "M4 6h16M4 12h16M4 18h16",
+<<<<<<< HEAD
   info: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 16v-4M12 8h.01",
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
   trash: "M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6",
 };
 
@@ -85,9 +88,15 @@ export default function Navbar() {
     <>
       {/* Left side bar */}
       {open && <div className="fixed inset-0 z-30 bg-black/40 md:hidden" onClick={close} aria-hidden="true" />}
+<<<<<<< HEAD
       <aside className={`fixed inset-y-0 left-0 z-40 flex w-52 flex-col overflow-hidden bg-gradient-to-b from-brand-dark via-brand to-[#2f6bc9] shadow-xl transition-transform md:visible md:translate-x-0 ${open ? "translate-x-0" : "invisible -translate-x-full"}`}>
         <Link to="/" onClick={close} className="flex h-14 items-center border-b-4 border-accent-bright bg-gradient-to-r from-black/20 to-transparent px-4 text-lg font-bold tracking-tight text-white">
           ITI HelpDesk
+=======
+      <aside className={`fixed inset-y-0 left-0 z-40 flex w-60 flex-col overflow-hidden bg-gradient-to-b from-brand-dark via-brand to-[#2f6bc9] shadow-xl transition-transform md:visible md:translate-x-0 ${open ? "translate-x-0" : "invisible -translate-x-full"}`}>
+        <Link to="/" onClick={close} className="flex h-14 items-center border-b-4 border-accent-bright bg-gradient-to-r from-black/20 to-transparent px-4 text-lg font-bold tracking-tight text-white">
+          ITI Helpdesk
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
         </Link>
         <nav aria-label="Main" className="flex-1 space-y-1 py-4">
           <Item to="/" end icon={ICONS.dashboard} label="Dashboard" onClick={close} />
@@ -95,7 +104,10 @@ export default function Navbar() {
                 badge={<Badge n={assigned} label="assigned to you" />} />
           {isMainAdmin && <Item to="/accounts" icon={ICONS.users} label="IT Staff" onClick={close} />}
           {isMainAdmin && <Item to="/deletion-logs" icon={ICONS.trash} label="Deletion Logs" onClick={close} />}
+<<<<<<< HEAD
           <Item to="/about" icon={ICONS.info} label="About Us" onClick={close} />
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
         </nav>
         {/* On phones the name is not in the top strip, so show it in the menu */}
         <div className="relative border-t border-white/15 p-4 text-sm text-white md:hidden">
@@ -105,11 +117,19 @@ export default function Navbar() {
       </aside>
 
       {/* Top strip: account name and sign out stay on the upper right */}
+<<<<<<< HEAD
       <header className="fixed left-0 right-0 top-0 z-20 flex h-14 items-center justify-between gap-3 border-b border-brand/10 bg-gradient-to-r from-[#e9f1ff]/90 via-[#dbe8fb]/90 to-[#ffd3a6]/95 px-4 shadow-sm backdrop-blur md:left-52">
         <button className="rounded-md p-2 text-brand md:hidden" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <Icon d={ICONS.menu} />
         </button>
         <span className="font-bold text-brand md:hidden">ITI HelpDesk</span>
+=======
+      <header className="fixed left-0 right-0 top-0 z-20 flex h-14 items-center justify-between gap-3 border-b border-brand/10 bg-gradient-to-r from-[#e9f1ff]/90 via-[#dbe8fb]/90 to-[#ffd3a6]/95 px-4 shadow-sm backdrop-blur md:left-60">
+        <button className="rounded-md p-2 text-brand md:hidden" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
+          <Icon d={ICONS.menu} />
+        </button>
+        <span className="font-bold text-brand md:hidden">ITI Helpdesk</span>
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
         <p className="hidden min-w-0 truncate bg-gradient-to-r from-brand-dark via-brand to-accent bg-clip-text text-base font-bold text-transparent md:block">
           Intellismart IT Department at Your Service!
         </p>

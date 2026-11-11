@@ -3,7 +3,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import api, { errorMessage, hasStaffAccess, requesterName, type Status, type TicketDetail, type User } from "../api/client";
 import { useAuth } from "../App";
 import StatusBadge from "../components/StatusBadge";
+<<<<<<< HEAD
 import PriorityBadge, { PRIORITIES } from "../components/PriorityBadge";
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 import { CATEGORIES, DEPARTMENTS } from "../constants";
 
 const fmt = (iso: string) => new Date(iso).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
@@ -127,6 +130,7 @@ export default function TicketDetailPage() {
     finally { setBusy(false); }
   };
 
+<<<<<<< HEAD
   // Staff choose the priority level (P1-P4). Saves right away, like "Change status".
   const changePriority = async (value: string) => {
     setError("");
@@ -136,6 +140,8 @@ export default function TicketDetailPage() {
     finally { setBusy(false); }
   };
 
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
   const addComment = async (e: FormEvent) => {
     e.preventDefault();
     if (!comment.trim()) return;
@@ -218,7 +224,10 @@ export default function TicketDetailPage() {
                 <h1 className="mt-1 text-2xl font-bold">{ticket.title}</h1>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <StatusBadge status={ticket.status} />
+<<<<<<< HEAD
                   {ticket.priority_level && <PriorityBadge level={ticket.priority_level} />}
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
                   <span className="rounded-full bg-brand-soft px-2.5 py-0.5 text-xs font-semibold text-brand-dark">{ticket.category}</span>
                   {ticket.department && (
                     <span className="rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-dark">{ticket.department}</span>
@@ -322,6 +331,7 @@ export default function TicketDetailPage() {
               </select>
             </div>
 
+<<<<<<< HEAD
             <div>
               <label htmlFor="priority" className="label">Priority level</label>
               <select id="priority" className="input" disabled={busy} value={ticket.priority_level ?? ""}
@@ -331,6 +341,8 @@ export default function TicketDetailPage() {
               </select>
             </div>
 
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
             {user?.role === "ADMIN" && ticket.status === "RESOLVED" && (
               <>
                 <hr className="border-slate-200" />
@@ -343,7 +355,11 @@ export default function TicketDetailPage() {
                     </div>
                   </div>
                 ) : (
+<<<<<<< HEAD
                   <button className="btn bg-red-700 text-white hover:bg-red-800" onClick={() => setConfirmDelete(true)}>
+=======
+                  <button className="btn w-full border border-red-300 bg-white text-red-700 hover:bg-red-50" onClick={() => setConfirmDelete(true)}>
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
                     Delete ticket
                   </button>
                 )}

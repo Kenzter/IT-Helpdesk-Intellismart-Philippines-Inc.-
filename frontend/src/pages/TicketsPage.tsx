@@ -4,8 +4,11 @@ import api, { errorMessage, hasStaffAccess, requesterName, type Status, type Tic
 import { useAuth } from "../App";
 import { CATEGORIES, DEPARTMENTS } from "../constants";
 import StatusBadge from "../components/StatusBadge";
+<<<<<<< HEAD
 import PriorityBadge from "../components/PriorityBadge";
 import PriorityLegend from "../components/PriorityLegend";
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 const TABS: { key: "ALL" | Status; label: string }[] = [
   { key: "ALL", label: "All" },
@@ -17,6 +20,7 @@ const TABS: { key: "ALL" | Status; label: string }[] = [
 
 const fmtDate = (iso: string) => new Date(iso).toLocaleDateString([], { dateStyle: "medium" });
 
+<<<<<<< HEAD
 // Month filter: a key like "2026-11" means tickets submitted in November 2026 (in the viewer's local time).
 const monthKey = (iso: string) => {
   const d = new Date(iso);
@@ -28,6 +32,8 @@ const monthLabel = (key: string) => {
   return new Date(y, m - 1, 1).toLocaleDateString([], { month: "long", year: "numeric" });
 };
 
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 export default function TicketsPage() {
   const { user } = useAuth();
   const isStaff = hasStaffAccess(user);
@@ -42,7 +48,10 @@ export default function TicketsPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [department, setDepartment] = useState("");
+<<<<<<< HEAD
   const [month, setMonth] = useState(""); // "" = all months, otherwise "YYYY-MM"
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -102,10 +111,14 @@ export default function TicketsPage() {
 
   const [mine, setMine] = useState(false); // staff: show only tickets assigned to me
   const myActive = tickets.filter((t) => t.assigned_to_id === user?.id && (t.status === "OPEN" || t.status === "IN_PROGRESS")).length;
+<<<<<<< HEAD
     // Months that have tickets, newest first (the chosen month always stays in the list).
   const monthOptions = Array.from(new Set([...tickets.map((t) => monthKey(t.created_at)), ...(month ? [month] : [])])).sort().reverse();
   const inMonth = (t: Ticket) => !month || monthKey(t.created_at) === month;
   const base = (mine ? tickets.filter((t) => t.assigned_to_id === user?.id) : tickets).filter(inMonth);
+=======
+  const base = mine ? tickets.filter((t) => t.assigned_to_id === user?.id) : tickets;
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
   const count = (k: "ALL" | Status) => (k === "ALL" ? base.length : base.filter((t) => t.status === k).length);
   const shown = tab === "ALL" ? base : base.filter((t) => t.status === tab);
   const canSelect = canDelete && tab === "RESOLVED";
@@ -126,9 +139,15 @@ export default function TicketsPage() {
       setDeleting(false);
     }
   };
+<<<<<<< HEAD
   const hasFilters = Boolean(query || category || department || month);
   const clear = () => { setSearch(""); setQuery(""); setCategory(""); setDepartment(""); setMonth(""); };
   const cols = ["ID", "Title", "Priority", "Category", "Department", "Status", "Employee", "Assigned to", "Submitted"];
+=======
+  const hasFilters = Boolean(query || category || department);
+  const clear = () => { setSearch(""); setQuery(""); setCategory(""); setDepartment(""); };
+  const cols = ["ID", "Title", "Category", "Department", "Status", "Employee", "Assigned to", "Submitted"];
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
   const colCount = cols.length + (canSelect ? 1 : 0);
 
@@ -155,7 +174,11 @@ export default function TicketsPage() {
         ))}
       </div>
 
+<<<<<<< HEAD
       <div className={`mb-4 grid gap-3 ${isStaff ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2"}`}>
+=======
+      <div className={`mb-4 grid gap-3 ${isStaff ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
         <input aria-label="Search tickets" placeholder="Search by ID, title or description" className="input"
                value={search} onChange={(e) => setSearch(e.target.value)} />
         <select aria-label="Filter by category" className="input" value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -168,12 +191,15 @@ export default function TicketsPage() {
             {DEPARTMENTS.map((d) => <option key={d}>{d}</option>)}
           </select>
         )}
+<<<<<<< HEAD
         
         <select aria-label="Filter by month and year" className="input" value={month} onChange={(e) => setMonth(e.target.value)}>
          <option value="">All months</option>
          {monthOptions.map((k) => <option key={k} value={k}>{monthLabel(k)}</option>)}
         </select>
 
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
       </div>
 
       {error && <p role="alert" className="mb-4 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
@@ -203,8 +229,11 @@ export default function TicketsPage() {
         </div>
       )}
 
+<<<<<<< HEAD
       <div className="mb-3 flex justify-end"><PriorityLegend /></div>
 
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
       <div className="table-wrap">
         <table className="min-w-full divide-y divide-slate-200 text-sm">
           <thead className="table-head">
@@ -216,7 +245,10 @@ export default function TicketsPage() {
                 </th>
               )}
               {cols.map((h) => <th key={h} scope="col" className="px-4 py-3">{h}</th>)}
+<<<<<<< HEAD
               
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
@@ -247,7 +279,10 @@ export default function TicketsPage() {
                 <td className="max-w-xs px-4 py-3">
                   <Link to={`/tickets/${t.id}`} className="font-semibold text-brand hover:underline" onClick={(e) => e.stopPropagation()}>{t.title}</Link>
                 </td>
+<<<<<<< HEAD
                 <td className="px-4 py-3"><PriorityBadge level={t.priority_level} /></td>
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
                 <td className="px-4 py-3">{t.category}</td>
                 <td className="px-4 py-3">{t.department ?? <span className="text-slate-400">-</span>}</td>
                 <td className="px-4 py-3"><StatusBadge status={t.status} /></td>
@@ -262,7 +297,11 @@ export default function TicketsPage() {
                     </>
                   ) : <span className="text-slate-400">Unassigned</span>}
                 </td>
+<<<<<<< HEAD
                 <td className="whitespace-nowrap px-4 py-3 text-slate-600">{fmtDate(t.created_at)}</td>    
+=======
+                <td className="whitespace-nowrap px-4 py-3 text-slate-600">{fmtDate(t.created_at)}</td>
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
               </tr>
             ))}
           </tbody>

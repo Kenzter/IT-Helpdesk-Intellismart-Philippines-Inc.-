@@ -8,6 +8,7 @@ export const CATEGORIES = [
 ];
 
 export const DEPARTMENTS = [
+<<<<<<< HEAD
   "Accounting",
   "Admin",
   "Aftersales",
@@ -43,4 +44,10 @@ export const DEPARTMENTS = [
   "Supersam",
   "Trade",
   "Warehouse",
+=======
+  "Admin", "Purchasing", "Finance", "Cebu Office", "Aftersales", "Supersam", "HR", "CSG", "CM",
+  "ESG", "OP", "MIS", "Accounting", "Opulence", "OVP", "Marketing", "EDD", "IT", "SD-Aftersales",
+  "PE-QS", "PED-QS", "Insys", "Progressive", "OEVP", "Warehouse", "PM-ES", "QA", "Lobby", "QAQC",
+  "QS", "Baguio", "Sales Admin", "Trade", "SUPERSAM COMMI", "RMA-SLA",
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 ];

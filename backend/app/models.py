@@ -29,9 +29,12 @@ class Ticket(Base):
     category = Column(String(60), nullable=False)   # see CATEGORIES in schemas.py
     department = Column(String(50), nullable=True)  # see DEPARTMENTS in schemas.py
     status = Column(String(15), nullable=False, default="OPEN")
+<<<<<<< HEAD
     # Set by IT staff: P1 Critical | P2 High | P3 Medium | P4 Low. Empty until staff choose one.
     # NOTE: must not be named "priority" - migrate() in main.py drops a legacy column with that name.
     priority_level = Column(String(2), nullable=True)
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
     # Employees no longer have accounts: their name is stored on the ticket itself.
     # reporter_id is only filled for older tickets that were created by a logged-in employee.
     requester_name = Column(String(255), nullable=True)

@@ -2,7 +2,10 @@ import axios from "axios";
 
 export type Role = "USER" | "ADMIN" | "ASSISTANT";
 export type Status = "OPEN" | "IN_PROGRESS" | "RESOLVED" | "CLOSED";
+<<<<<<< HEAD
 export type PriorityLevel = "P1" | "P2" | "P3" | "P4";
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 export type AccountStatus = "PENDING" | "APPROVED" | "REJECTED";
 export interface User {
@@ -17,7 +20,10 @@ export interface Ticket {
   status: Status; reporter_id: number | null; requester_name: string | null; assigned_to_id: number | null;
   created_at: string; updated_at: string; reporter: User | null; assigned_to: User | null;
   last_edited_at?: string | null; last_edited_by?: User | null;
+<<<<<<< HEAD
   priority_level?: PriorityLevel | null;
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 }
 export interface TicketDetail extends Ticket { comments: Comment[] }
 

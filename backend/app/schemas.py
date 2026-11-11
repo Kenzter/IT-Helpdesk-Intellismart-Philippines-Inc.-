@@ -15,7 +15,10 @@ DEPARTMENTS = [
 Category = Literal[tuple(CATEGORIES)]
 Department = Literal[tuple(DEPARTMENTS)]
 Status = Literal["OPEN", "IN_PROGRESS", "RESOLVED", "CLOSED"]
+<<<<<<< HEAD
 PriorityLevel = Literal["P1", "P2", "P3", "P4"]
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 
 class StaffCreate(BaseModel):
@@ -95,7 +98,10 @@ class TicketUpdate(BaseModel):
     department: Optional[Department] = None  # send explicit null to clear
     status: Optional[Status] = None
     assigned_to_id: Optional[int] = None  # send explicit null to unassign
+<<<<<<< HEAD
     priority_level: Optional[PriorityLevel] = None  # send explicit null to clear
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 
 class TicketOut(BaseModel):
@@ -107,7 +113,10 @@ class TicketOut(BaseModel):
     department: Optional[str]
     status: str
     reporter_id: Optional[int] = None
+<<<<<<< HEAD
     priority_level: Optional[str] = None
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
     requester_name: Optional[str] = None
     assigned_to_id: Optional[int]
     created_at: datetime

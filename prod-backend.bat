@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 @echo off
 title ITI Helpdesk - Backend (do not close)
 cd /d "%~dp0backend"
@@ -6,7 +10,11 @@ rem Generate a random secret key if not already configured
 for /f "delims=" %%K in ('python -c "import secrets; print(secrets.token_hex(32))"') do set "SECRET_KEY=%%K"
 
 rem Configure allowed frontend origins
+<<<<<<< HEAD
 set "ALLOWED_ORIGINS=http://YOUR-INTERNAL-IP-ADDRESS-HERE,http://YOUR_DNS_NAME"
+=======
+set "ALLOWED_ORIGINS=http://YOUR-SERVER-IP:ASSIGNED PORT,http://YOUR-SERVER-NAME"
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 set "DISABLE_DOCS=1"
 
 rem Check backend folder
@@ -36,4 +44,8 @@ echo.
 echo Backend stopped. Check the error above.
 echo Restarting in 10 seconds. Close this window to stop it.
 timeout /t 10 /nobreak >nul
+<<<<<<< HEAD
 goto run
+=======
+goto run
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe

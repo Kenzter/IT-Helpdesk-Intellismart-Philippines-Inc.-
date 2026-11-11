@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ITI Helpdesk
 
 A web-based IT helpdesk and ticketing system for **Intellismart IT Services**. Employees submit IT concerns through a public form (no account needed). The IT Department signs in to track, assign, prioritize, resolve and audit those tickets.
@@ -358,3 +359,6 @@ Developed with dedication by the ITI HelpDesk Development Team.
 Support hours: Mon–Fri, 8:00 AM – 6:00 PM
 
 © 2026 ITI Helpdesk | All rights reserved
+=======
+# IT-Helpdesk-Intellismart-Philippines-Inc.-
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe

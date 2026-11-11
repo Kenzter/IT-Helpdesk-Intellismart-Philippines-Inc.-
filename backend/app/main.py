@@ -17,7 +17,11 @@ def seed_admin():
             db.add(models.User(
                 email=os.getenv("ADMIN_EMAIL", "admin@example.com"),
                 full_name="IT Admin",
+<<<<<<< HEAD
                 hashed_password=hash_password(os.getenv("ADMIN_PASSWORD", "Your-Password-Here")),
+=======
+                hashed_password=hash_password(os.getenv("ADMIN_PASSWORD", "Your_Password")),
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
                 role="ADMIN"))
             db.commit()
     finally:
@@ -78,9 +82,12 @@ def migrate():
         if "last_edited_at" not in current_cols:
             timestamp_type = "TIMESTAMP WITH TIME ZONE" if engine.dialect.name == "postgresql" else "DATETIME"
             conn.execute(text(f"ALTER TABLE tickets ADD COLUMN last_edited_at {timestamp_type}"))
+<<<<<<< HEAD
         # Priority level (P1-P4) chosen by IT staff. Existing tickets stay empty (not set).
         if "priority_level" not in current_cols:
             conn.execute(text("ALTER TABLE tickets ADD COLUMN priority_level VARCHAR(2)"))
+=======
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 
 @asynccontextmanager
@@ -96,7 +103,11 @@ async def lifespan(_: FastAPI):
 # Addresses of the website that may talk to this server. Set ALLOWED_ORIGINS to a
 # comma-separated list for deployment, e.g. "http://helpdesk.mycompany.com".
 ALLOWED_ORIGINS = [o.strip() for o in os.getenv(
+<<<<<<< HEAD
     "ALLOWED_ORIGINS", "YOUR NETWORK IP ADDRESS HERE,http://localhost:5173,http://127.0.0.1:5173").split(",") if o.strip()]
+=======
+    "ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if o.strip()]
+>>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 _docs_off = os.getenv("DISABLE_DOCS") == "1"  # set DISABLE_DOCS=1 on the real server
 app = FastAPI(title="IT Helpdesk API", version="1.0.0", lifespan=lifespan,
