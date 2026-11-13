@@ -1,11 +1,8 @@
 import axios from "axios";
 
 export type Role = "USER" | "ADMIN" | "ASSISTANT";
-export type Status = "OPEN" | "IN_PROGRESS" | "RESOLVED" | "CLOSED";
-<<<<<<< HEAD
+export type Status = "OPEN" | "IN_PROGRESS" | "RESOLVED";
 export type PriorityLevel = "P1" | "P2" | "P3" | "P4";
-=======
->>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
 
 export type AccountStatus = "PENDING" | "APPROVED" | "REJECTED";
 export interface User {
@@ -20,10 +17,15 @@ export interface Ticket {
   status: Status; reporter_id: number | null; requester_name: string | null; assigned_to_id: number | null;
   created_at: string; updated_at: string; reporter: User | null; assigned_to: User | null;
   last_edited_at?: string | null; last_edited_by?: User | null;
-<<<<<<< HEAD
   priority_level?: PriorityLevel | null;
-=======
->>>>>>> 8ea02deb3a1965e435a46fafed7de5339cfc65fe
+  ip_address?: string | null;
+  // Manual Entry: historical tickets encoded by IT staff (ip_address is "Manual Entry").
+  is_manual?: boolean; deleted_at?: string | null; resolved_at?: string | null;
+  manual_entered_at?: string | null; manual_entered_by?: User | null;
+  // Invalid = flagged as a mistake by IT staff: not counted in the Dashboard or Support Logs.
+  invalid_at?: string | null; invalid_reason?: string | null; invalid_by?: User | null;
+  // Optional second technician (the primary one stays in assigned_to / assigned_to_id).
+  assigned_to_2_id?: number | null; assigned_to_2?: User | null;
 }
 export interface TicketDetail extends Ticket { comments: Comment[] }
 
@@ -32,8 +34,13 @@ export interface TicketDeletionLog {
   id: number; original_ticket_id: number; ticket_title: string; ticket_description: string;
   ticket_category: string; ticket_department: string | null; ticket_status: Status;
   requester_name: string | null; assigned_to_id: number | null; assigned_to_name: string | null;
+  assigned_to_2_id?: number | null; assigned_to_2_name?: string | null;
   ticket_created_at: string | null; deleted_by_id: number; deleted_by_name: string; deleted_at: string;
 }
+
+// Every technician on a ticket (primary first, then the optional second one).
+export const ticketTechnicians = (t: { assigned_to?: User | null; assigned_to_2?: User | null }) =>
+  [t.assigned_to, t.assigned_to_2].filter((u): u is User => Boolean(u));
 
 // IT staff = main admin or IT assistant. Only the main admin can delete tickets.
 export const hasStaffAccess = (u?: { role: Role } | null) => u?.role === "ADMIN" || u?.role === "ASSISTANT";
@@ -79,7 +86,7 @@ export default api;
 export const fetchDeletionLogs = () => api.get<TicketDeletionLog[]>("/tickets/deletion-logs").then((r) => r.data);
 
 export interface Summary {
-  total: number; open: number; in_progress: number; resolved: number; closed: number;
+  total: number; open: number; in_progress: number; resolved: number;
   categories: { name: string; count: number; percent: number }[];
   departments: { name: string; count: number }[];
 }
@@ -91,3 +98,17 @@ export interface Stats {
   yearly: Summary | null;
   trend: { month: string; count: number }[];
 }
+
+
+
+export interface IPSubmissionLog {
+  id: number;
+  ticket_id: number;
+  ip_address: string;
+  submitted_at: string;
+  user_agent?: string | null;
+}
+
+// Admin only. Newest public ticket submission first.
+export const fetchIPSubmissionLogs = () =>
+  api.get<IPSubmissionLog[]>("/tickets/ip-logs").then((r) => r.data);
